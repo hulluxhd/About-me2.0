@@ -1,15 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import InitialPageParallax from "./Pages/InitialPageParallax";
+import Home from "./Pages/Home";
+
 
 
 function App() {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
-
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>
