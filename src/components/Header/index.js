@@ -12,7 +12,7 @@ function Header() {
 
             <Box
                 display="flex"
-                p="30px 10px"
+                p="15px 10px"
                 justifyContent="space-between"
                 maxW={1200}
                 margin="0 auto"
