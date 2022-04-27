@@ -7,7 +7,9 @@ import {
   Text,
   VStack,
   Divider,
+  useMediaQuery,
 } from "@chakra-ui/react";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import galaxyback from "../../assets/galaxybackg.png";
@@ -16,10 +18,13 @@ import stars from "../../assets/stars.png";
 import rocket from "../../assets/rocket.gif";
 import houston from "../../assets/houston.png";
 import galaxy from "../../assets/g2.jpg";
+import astrocat from "../../assets/astrocat.png";
 import "./style.css";
 
 function Home() {
   AOS.init();
+
+  const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
 
   return (
     <Box bgColor="rgba(10,13,42,255)">
@@ -103,7 +108,7 @@ function Home() {
       </section>
 
       <section>
-        <Flex minH="100vh" justify="center" wrap="wrap">
+        <Flex minH="75vh" justify="center" wrap="wrap">
           <Box
             p="25px 40px 15px"
             w="100%"
@@ -113,7 +118,7 @@ function Home() {
             zIndex="2"
             data-aos="fade-right"
             data-aos-once="true"
-            flex="0 1 65%"
+            flex={isLargerThan900 ? "0 1 65%" : "0 1 100%"}
           >
             <Box>
               <Heading
@@ -126,8 +131,11 @@ function Home() {
               >
                 About
               </Heading>
-              <Stack color="#FFF" 
-              fontSize="1.2rem" fontFamily="'Orelega One', cursive;">
+              <Stack
+                color="#FFF"
+                fontSize="1.2rem"
+                fontFamily="'Orelega One', cursive;"
+              >
                 <Text>Gatonauta: Denny Ribeiro</Text>
                 <Text>Formação: Economia</Text>
                 <Text>Formação Técnica: Digital House (CTD)</Text>
@@ -179,26 +187,38 @@ function Home() {
             data-aos-once="true"
             position="relative"
             w="100%"
-            h="auto%"
-            flex="0 1 35%"
+            h="auto"
+            flex={isLargerThan900 ? "0 1 35%" : "0 1 100%"}
           >
             <Box
               w="100%"
               h="100%"
-              minH="inherit"
+              minH="500px"
               bgSize="cover"
               bgImage={galaxy}
               opacity="0.5"
             />
-            <Image
-              position="absolute"
-              top="35%"
-              left="-15%"
-              w={500}
-              zIndex={1}
-              transform="rotate(330deg)"
-              src={houston}
-            />
+            {isLargerThan900 ? (
+              <Image
+                position="absolute"
+                top="35%"
+                left="-15%"
+                w={500}
+                zIndex={1}
+                transform="rotate(330deg)"
+                src={houston}
+              />
+            ) : (
+              <Image
+                position="absolute"
+                top="32%"
+                left="32%"
+                w={200}
+                zIndex={1}
+                
+                src={astrocat}
+              />
+            )}
           </Box>
         </Flex>
       </section>
