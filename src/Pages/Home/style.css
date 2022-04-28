@@ -1,5 +1,5 @@
 
-
+/* Satélite */
 
 #sat-orbit{
     position: absolute;
@@ -33,3 +33,40 @@
     0% {transform: rotateZ(0deg);}
     100% {transform: rotateZ(360deg);}
 }
+
+/* Swiper */
+
+.swiper{
+    background-color: rgb(229, 233, 236);
+    height:25%;
+}
+
+.swiper-slide {
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    gap: 5px;
+}
+
+.swiper-slide svg{
+    font-size: 5rem;
+    background-color: rgba(10,13,42,255);
+    border-radius: 50%;
+    padding: 15px;
+    color: #fff;    
+}
+
+.swiper-slide img{
+    width:75%;
+    border-radius: 10px;
+}
+
+
+
+
+
+

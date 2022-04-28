@@ -8,6 +8,7 @@ import {
   VStack,
   Divider,
   useMediaQuery,
+  Icon,
 } from "@chakra-ui/react";
 
 import AOS from "aos";
@@ -19,10 +20,21 @@ import rocket from "../../assets/rocket.gif";
 import houston from "../../assets/houston.png";
 import galaxy from "../../assets/g2.jpg";
 import astrocat from "../../assets/astrocat.png";
+import dados from "../../assets/data/tecnologias";
 import "./style.css";
+import "swiper/css";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {Navigation, Pagination} from "swiper"
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function Home() {
   AOS.init();
+
+  const [active, setActive] = useState(dados[0]);
+
+  const [imagens] = [active.imagens];
 
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
 
@@ -107,8 +119,8 @@ function Home() {
         </Flex>
       </section>
 
-      <section>
-        <Flex minH="75vh" justify="center" wrap="wrap">
+      <section style={{ marginTop: "100px" }}>
+        <Flex minH="100vh" justify="center" wrap="wrap">
           <Box
             p="25px 40px 15px"
             w="100%"
@@ -215,12 +227,34 @@ function Home() {
                 left="32%"
                 w={200}
                 zIndex={1}
-                
                 src={astrocat}
               />
             )}
           </Box>
         </Flex>
+      </section>
+      <section style={{ marginTop: "100px", minHeight: "100vh" }}>
+        <Swiper 
+        modules={[Navigation]}
+        slidesPerView={5}
+        loop={true} 
+        navigation={true}
+        >
+          {dados.map((tecnologia) => (
+            <SwiperSlide
+              onClick={()=>setActive(tecnologia)}
+              key={tecnologia.id}
+            >
+              <Icon  as={tecnologia.tec} />
+              <span>{tecnologia.title}</span>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <Swiper modules={[Pagination]} pagination={{clickable: true}} style={{backgroundColor: "transparent"}} >
+          {active.imagens.map(imagem => (
+            <SwiperSlide><Image src={active.imagens.length == 0 ? galaxy : imagem}/></SwiperSlide>
+          ))}
+        </Swiper>
       </section>
     </Box>
   );
