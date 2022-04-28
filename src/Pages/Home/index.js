@@ -25,9 +25,10 @@ import "./style.css";
 import "swiper/css";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {Navigation, Pagination} from "swiper"
+import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { act } from "react-dom/test-utils";
 
 function Home() {
   AOS.init();
@@ -37,7 +38,17 @@ function Home() {
   const [imagens] = [active.imagens];
 
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
 
+  function setIcons() {
+    if (isLargerThan900) {
+      return 5;
+    } else if (isLargerThan600) {
+      return 3;
+    } else return 2;
+  }
+
+  console.log(active);
   return (
     <Box bgColor="rgba(10,13,42,255)">
       <section
@@ -119,7 +130,7 @@ function Home() {
         </Flex>
       </section>
 
-      <section style={{ marginTop: "100px" }}>
+      <section style={{}}>
         <Flex minH="100vh" justify="center" wrap="wrap">
           <Box
             p="25px 40px 15px"
@@ -233,26 +244,71 @@ function Home() {
           </Box>
         </Flex>
       </section>
-      <section style={{ marginTop: "100px", minHeight: "100vh" }}>
-        <Swiper 
-        modules={[Navigation]}
-        slidesPerView={5}
-        loop={true} 
-        navigation={true}
+      
+      <section style={{ minHeight: "50vh" }}>
+        <Box p="50px 0">
+          <Box
+            display="flex"
+            bgGradient="linear(to-br, rgba(161, 166, 214, 0.63), rgba(23, 13, 139, 0.97), rgba(10,13,42,255))"
+            p="15px"
+            boxSizing="border-box"
+            borderRadius={12}
+            boxShadow="md"
+            width="60%"
+            data-aos="fade-right"
+            data-aos-once="true"
+            m="0 auto"
+          >
+            <Text
+              bgGradient="linear(to-l,  #FF0080, #7928CA)"
+              bgClip="text"
+              m="0 auto"
+              fontSize="2.5rem"
+              fontFamily="'Righteous', cursive"
+              data-aos="fade-right"
+              data-aos-delay="250"
+              data-aos-once="true"
+            >
+              Tecnologias
+            </Text>
+          </Box>
+        </Box>
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={setIcons()}
+          loop={true}
+          navigation={true}
         >
           {dados.map((tecnologia) => (
             <SwiperSlide
-              onClick={()=>setActive(tecnologia)}
+              onClick={() => setActive(tecnologia)}
               key={tecnologia.id}
             >
-              <Icon  as={tecnologia.tec} />
-              <span>{tecnologia.title}</span>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                border={
+                  active.id == tecnologia.id ? "2px solid #FF0080" : "none"
+                }
+                p={5}
+                borderRadius="12px"
+              >
+                <Icon as={tecnologia.tec} />
+                <span>{tecnologia.title}</span>
+              </Box>
             </SwiperSlide>
           ))}
         </Swiper>
-        <Swiper modules={[Pagination]} pagination={{clickable: true}} style={{backgroundColor: "transparent"}} >
-          {active.imagens.map(imagem => (
-            <SwiperSlide><Image src={active.imagens.length == 0 ? galaxy : imagem}/></SwiperSlide>
+        <Swiper
+          modules={[Pagination]}
+          pagination={{ clickable: true }}
+          style={{ backgroundColor: "transparent" }}
+        >
+          {imagens.map((imagem, i) => (
+            <SwiperSlide key={i}>
+              <Image src={imagem} />
+            </SwiperSlide>
           ))}
         </Swiper>
       </section>
