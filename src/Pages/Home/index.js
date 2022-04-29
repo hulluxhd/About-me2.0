@@ -9,7 +9,13 @@ import {
   Divider,
   useMediaQuery,
   Icon,
+  Grid,
+  ButtonGroup,
+  Button,
 } from "@chakra-ui/react";
+
+import { BsPaperclip } from "react-icons/bs";
+import { SiLinkedin, SiGithub } from "react-icons/si";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -20,6 +26,7 @@ import rocket from "../../assets/rocket.gif";
 import houston from "../../assets/houston.png";
 import galaxy from "../../assets/g2.jpg";
 import astrocat from "../../assets/astrocat.png";
+import seeya from "../../assets/seeya.jpg";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
@@ -244,7 +251,7 @@ function Home() {
           </Box>
         </Flex>
       </section>
-      
+
       <section style={{ minHeight: "50vh" }}>
         <Box p="50px 0">
           <Box
@@ -278,6 +285,7 @@ function Home() {
           slidesPerView={setIcons()}
           loop={true}
           navigation={true}
+          style={{ marginBottom: "20px" }}
         >
           {dados.map((tecnologia) => (
             <SwiperSlide
@@ -291,7 +299,7 @@ function Home() {
                 border={
                   active.id == tecnologia.id ? "2px solid #FF0080" : "none"
                 }
-                p={5}
+                p="10px 20px"
                 borderRadius="12px"
               >
                 <Icon as={tecnologia.tec} />
@@ -311,6 +319,63 @@ function Home() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </section>
+      <section style={{ marginTop: "100px", padding: "12px" }}>
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          textAlign="center"
+          width="90%"
+          gap={55}
+          fontFamily="'Righteous', cursive"
+          m="0 auto"
+          h={300}
+          borderRadius="xl"
+        >
+          {/* <Heading
+            bgGradient="linear(to-l,   #7928CA, #FF0080)"
+            bgClip="text"
+            m="0 auto"
+            fontSize="2.5rem"
+            as="h2"
+          >
+            See you, space kittenboy...
+          </Heading> */}
+          <Text
+            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgClip="text"
+            m="0 auto"
+            fontSize="2.5rem"
+          >
+            Bora tomar uma cerveja e falar sobre gatos no <span> espaço</span>?
+          </Text>
+          <ButtonGroup spacing="5rem">
+            <Button
+              p={7}
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              leftIcon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
+            >
+              Linkedin
+            </Button>
+            <Button
+              p={7}
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              leftIcon={<SiGithub style={{ fontSize: "1.5rem" }} />}
+            >
+              Github
+            </Button>
+            <Button
+              p={7}
+              onClick={(isLoading)=>isLoading=true}
+              
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              leftIcon={<BsPaperclip style={{ fontSize: "1.5rem" }} />}
+            >
+              Currículo
+            </Button>
+          </ButtonGroup>
+        </Flex>
       </section>
     </Box>
   );

@@ -38,7 +38,7 @@
 
 .swiper{
     background-color: rgb(229, 233, 236);
-    height:25%;
+    height:20%;
 }
 
 .swiper-slide {
@@ -48,15 +48,15 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 12px;
     gap: 5px;
 }
 
 .swiper-slide svg{
-    font-size: 5rem;
+    font-size: 4rem;
     background-color: rgba(10,13,42,255);
     border-radius: 50%;
-    padding: 15px;
+    padding: 10px;
     color: #fff;  
     cursor: pointer;  
 }
@@ -67,10 +67,7 @@
     border-radius: 10px;
 }
 
-.swiper-pagination-bullet{
-    background-color: white;
-    color: red;
-}
+
 
 @media screen and (max-width: 900px) {
     .swiper-slide img{
