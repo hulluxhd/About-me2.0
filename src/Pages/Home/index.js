@@ -16,7 +16,6 @@ import {
 import { BsPaperclip } from "react-icons/bs";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 import curriculo from "../../assets/Denny.pdf";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import g3 from "../../assets/g3.jpg";
 import gatonauta from "../../assets/gatonauta1.png";
