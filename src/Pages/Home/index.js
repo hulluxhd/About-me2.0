@@ -9,8 +9,6 @@ import {
   Divider,
   useMediaQuery,
   Icon,
-  Grid,
-  ButtonGroup,
   Button,
 } from "@chakra-ui/react";
 
@@ -19,16 +17,12 @@ import { SiLinkedin, SiGithub } from "react-icons/si";
 import curriculo from "../../assets/Denny.pdf";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import galaxyback from "../../assets/galaxybackg.png";
-import galaxy2 from "../../assets/galaxy2.jpg";
 import g3 from "../../assets/g3.jpg";
 import gatonauta from "../../assets/gatonauta1.png";
 import stars from "../../assets/stars.png";
-import rocket from "../../assets/rocket.gif";
 import houston from "../../assets/houston.png";
 import galaxy from "../../assets/g2.jpg";
 import astrocat from "../../assets/astrocat.png";
-import seeya from "../../assets/seeya.jpg";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
@@ -37,12 +31,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { act } from "react-dom/test-utils";
 import ButtonSocial from "../../components/Button";
-import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 
 function Home() {
-  AOS.init();
+  
 
   const [active, setActive] = useState(dados[0]);
   const [loading, setLoading] = useState(false);
@@ -61,7 +53,6 @@ function Home() {
     } else return 2;
   }
 
-  console.log(active);
   return (
     <Box bgColor="rgba(10,13,42,255)">
       <section
@@ -92,30 +83,18 @@ function Home() {
           m="0 auto"
           minH="calc(100vh - 70px)"
         >
-          <Box
-            display="flex"
-            bgGradient="linear(to-br, rgba(161, 166, 214, 0.63), rgba(23, 13, 139, 0.97), rgba(10,13,42,255))"
-            p="15px"
-            boxSizing="border-box"
-            borderRadius={12}
-            boxShadow="md"
-            width="60%"
+          <Text
+            bgGradient="linear(to-l,  #FF0080, #7928CA)"
+            bgClip="text"
+            m="0 auto"
+            fontSize="2.5rem"
+            fontFamily="'Righteous', cursive"
             data-aos="fade-right"
+            data-aos-delay="250"
             data-aos-once="true"
           >
-            <Text
-              bgGradient="linear(to-l,  #FF0080, #7928CA)"
-              bgClip="text"
-              m="0 auto"
-              fontSize="2.5rem"
-              fontFamily="'Righteous', cursive"
-              data-aos="fade-right"
-              data-aos-delay="250"
-              data-aos-once="true"
-            >
-              Olá, Gatonauta
-            </Text>
-          </Box>
+            Olá, Gatonauta
+          </Text>
 
           <VStack>
             <Box position="relative" w="100%" h="100%">
@@ -146,7 +125,7 @@ function Home() {
       <section style={{}}>
         <Flex minH="100vh" justify="center" wrap="wrap">
           <Box
-            p="25px 40px 15px"
+            p="25px 40px"
             w="100%"
             bgGradient="linear(to-br, rgba(23, 13, 139, 0.97), rgba(10,13,42,255))"
             display="flex"
@@ -182,7 +161,7 @@ function Home() {
               </Stack>
             </Box>
             <Divider height="5px" m="15px 0px" />
-            <Box>
+            <Box padding="0 0 30px">
               <Heading
                 as="h3"
                 textAlign="center"
@@ -259,32 +238,20 @@ function Home() {
       </section>
 
       <section style={{ minHeight: "50vh" }}>
-        <Box p="50px 0">
-          <Box
-            display="flex"
-            bgGradient="linear(to-br, rgba(161, 166, 214, 0.63), rgba(23, 13, 139, 0.97), rgba(10,13,42,255))"
-            p="15px"
-            boxSizing="border-box"
-            borderRadius={12}
-            boxShadow="md"
-            width="60%"
+        <Box p="20px 0">
+          <Text
+            bgGradient="linear(to-l,  #FF0080, #7928CA)"
+            bgClip="text"
+            fontWeight="bold"
+            fontSize="3rem"
+            fontFamily="'Righteous', cursive"
             data-aos="fade-right"
+            data-aos-delay="250"
             data-aos-once="true"
-            m="0 auto"
+            textAlign="center"
           >
-            <Text
-              bgGradient="linear(to-l,  #FF0080, #7928CA)"
-              bgClip="text"
-              m="0 auto"
-              fontSize="2.5rem"
-              fontFamily="'Righteous', cursive"
-              data-aos="fade-right"
-              data-aos-delay="250"
-              data-aos-once="true"
-            >
-              Tecnologias
-            </Text>
-          </Box>
+            Tecnologias
+          </Text>
         </Box>
         <Swiper
           modules={[Navigation]}
@@ -327,93 +294,103 @@ function Home() {
         </Swiper>
       </section>
       <section style={{ marginTop: "110px" }}>
-        <Flex
-          direction="column"
-          justify="center"
-          align="center"
-          textAlign="center"
-          width="90%"
-          fontFamily="'Righteous', cursive"
-          m="0 auto"
-          h={200}
-          borderRadius="xl"
-        >
-          <Text
-            bgGradient="linear(to-l, #7928CA, #FF0080)"
-            bgClip="text"
+        <Box minH="50vh">
+          <Flex
+            direction="column"
+            justify="center"
+            align="center"
+            textAlign="center"
+            width="90%"
+            fontFamily="'Righteous', cursive"
             m="0 auto"
-            fontSize="2.5rem"
+            borderRadius="xl"
           >
-            Bora tomar uma cerveja e falar sobre gatos no <span> espaço</span>?
-          </Text>
-        </Flex>
-        <Box
-          p="10px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexWrap="wrap"
-        >
-          <Stack
-            direction={isLargerThan600 ? "row" : "column"}
-            m={isLargerThan500 ? "0 0 100px" : "50px 0"}
-            spacing="3rem"
-            data-aos="fade-right"
-            data-aos-once={true}
-          >
-            <ButtonSocial
-              icon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
-              description="LinkedIn"
-            />
-            <ButtonSocial
-              icon={<SiGithub style={{ fontSize: "1.5rem" }} />}
-              description="Github"
-            />
-            <Button
-              as="a"
-              href={curriculo}
-              download="DennyRibeiro.pdf"
-              _hover={{
-                bg: "transparent",
-                border: "1px solid #FF0080",
-                color: "#FFF",
-              }}
-              transition="ease-in-out 1ms"
-              p={7}
+            <Text
               bgGradient="linear(to-l, #7928CA, #FF0080)"
-              leftIcon={<BsPaperclip style={{ fontSize: "1.5rem" }} />}
-              isLoading={loading}
-              loadingText="Carregando..."
-              onClick={() => {
-                setLoading(true);
-                setTimeout(() => {
-                  setLoading(false);
-                }, 2000);
-              }}
-              data-aos="flip-right"
-              data-aos-delay="250"
+              bgClip="text"
+              m="0 auto"
+              fontSize="2.5rem"
+            >
+              Bora tomar uma cerveja e falar sobre gatos no <span> espaço</span>
+              ?
+            </Text>
+          </Flex>
+
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexWrap="wrap"
+            bgColor="linear(to-l, #7928CA, #FF0080)"
+          >
+            <Stack
+              direction={isLargerThan600 ? "row" : "column"}
+              p={isLargerThan500 ? "50px 0 100px" : "50px 0"}
+              spacing="3rem"
+              data-aos="fade-right"
               data-aos-once={true}
             >
-              Currículo
-            </Button>
-          </Stack>
+              <ButtonSocial
+                icon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
+                description="LinkedIn"
+              />
+              <ButtonSocial
+                icon={<SiGithub style={{ fontSize: "1.5rem" }} />}
+                description="Github"
+              />
+              <Button
+                as="a"
+                href={curriculo}
+                download="DennyRibeiro.pdf"
+                _hover={{
+                  bg: "transparent",
+                  border: "1px solid #FF0080",
+                  color: "#FFF",
+                }}
+                transition="ease-in-out 1ms"
+                p={7}
+                bgGradient="linear(to-l, #7928CA, #FF0080)"
+                leftIcon={<BsPaperclip style={{ fontSize: "1.5rem" }} />}
+                isLoading={loading}
+                loadingText="Carregando..."
+                onClick={() => {
+                  setLoading(true);
+                  setTimeout(() => {
+                    setLoading(false);
+                  }, 2000);
+                }}
+                data-aos="flip-right"
+                data-aos-delay="250"
+                data-aos-once={true}
+              >
+                Currículo
+              </Button>
+            </Stack>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            bgGradient="linear(to-b,  #7928CA,  #FF0080)"
+            w="100%"
+            h="50vh"
+          >
+            <Heading
+              fontFamily="'Righteous', cursive"
+              bgImage={g3}
+              bgSize="contain"
+              letterSpacing="3px"
+              bgClip="text"
+              textAlign="center"
+              p="100px 25px"
+              size="3xl"
+              as="h2"
+            >
+              See you, space Kittenboy...
+            </Heading>
+          </Box>
         </Box>
       </section>
-      <Box bgGradient="linear(to-b,  #7928CA,  #FF0080)">
-        <Heading
-          fontFamily="'Righteous', cursive"
-          bgImage={g3}
-          bgSize="contain"
-          letterSpacing="3px"
-          bgClip="text"
-          align="center"
-          p="100px 0"
-          size="3xl"
-          as="h2"
-        >
-          See you, space Kittenboy...
-        </Heading>
-      </Box>
     </Box>
   );
 }
