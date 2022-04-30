@@ -4,7 +4,7 @@ import html1 from "../sao_luis.jpg"
 import css1 from "../codar.jpg"
 import css2 from "../bootstrap1.jpg"
 import css3 from "../bom_trajeto.jpg"
-import galaxy from "../../assets/g2.jpg";
+import wecame from "../../assets/wecame.jpg";
 import about1 from "../../assets/aboutme1.0.jpg";
 
 
@@ -37,37 +37,37 @@ const dados = [
         id: 5,
         tec: SiJava,
         title: "Java",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
     {
         id: 6,
         tec: SiSpring,
         title: "Spring",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
     {
         id: 7,
         tec: SiMysql,
         title: "Mysql",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
     {
         id: 8,
         tec: SiAmazonaws,
         title: "AWS",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
     {
         id: 9,
         tec: SiHeroku,
         title: "Heroku",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
     {
         id: 10,
         tec: SiGithub,
         title: "Github",
-        imagens: [galaxy]
+        imagens: [wecame]
     },
 ]
 

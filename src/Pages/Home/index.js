@@ -10,6 +10,7 @@ import {
   useMediaQuery,
   Icon,
   Button,
+  Link,
 } from "@chakra-ui/react";
 
 import { BsPaperclip } from "react-icons/bs";
@@ -34,8 +35,6 @@ import "swiper/css/pagination";
 import ButtonSocial from "../../components/Button";
 
 function Home() {
-  
-
   const [active, setActive] = useState(dados[0]);
   const [loading, setLoading] = useState(false);
 
@@ -330,14 +329,18 @@ function Home() {
               data-aos="fade-right"
               data-aos-once={true}
             >
-              <ButtonSocial
-                icon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
-                description="LinkedIn"
-              />
-              <ButtonSocial
-                icon={<SiGithub style={{ fontSize: "1.5rem" }} />}
-                description="Github"
-              />
+              <Link href="https://linkedin.com/in/denny-ribeiro" isExternal>
+                <ButtonSocial
+                  icon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
+                  description="LinkedIn"
+                />
+              </Link>
+              <Link href="https://github.com/hulluxhd" isExternal>
+                <ButtonSocial
+                  icon={<SiGithub style={{ fontSize: "1.5rem" }} />}
+                  description="Github"
+                />
+              </Link>
               <Button
                 as="a"
                 href={curriculo}
