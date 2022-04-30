@@ -16,10 +16,12 @@ import {
 
 import { BsPaperclip } from "react-icons/bs";
 import { SiLinkedin, SiGithub } from "react-icons/si";
-
+import curriculo from "../../assets/Denny.pdf";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import galaxyback from "../../assets/galaxybackg.png";
+import galaxy2 from "../../assets/galaxy2.jpg";
+import g3 from "../../assets/g3.jpg";
 import gatonauta from "../../assets/gatonauta1.png";
 import stars from "../../assets/stars.png";
 import rocket from "../../assets/rocket.gif";
@@ -36,16 +38,20 @@ import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { act } from "react-dom/test-utils";
+import ButtonSocial from "../../components/Button";
+import { Typewriter, useTypewriter, Cursor } from "react-simple-typewriter";
 
 function Home() {
   AOS.init();
 
   const [active, setActive] = useState(dados[0]);
+  const [loading, setLoading] = useState(false);
 
   const [imagens] = [active.imagens];
 
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
+  const [isLargerThan500] = useMediaQuery("(min-width: 500px)");
 
   function setIcons() {
     if (isLargerThan900) {
@@ -320,28 +326,18 @@ function Home() {
           ))}
         </Swiper>
       </section>
-      <section style={{ marginTop: "100px", padding: "12px" }}>
+      <section style={{ marginTop: "110px" }}>
         <Flex
           direction="column"
           justify="center"
           align="center"
           textAlign="center"
           width="90%"
-          gap={55}
           fontFamily="'Righteous', cursive"
           m="0 auto"
-          h={300}
+          h={200}
           borderRadius="xl"
         >
-          {/* <Heading
-            bgGradient="linear(to-l,   #7928CA, #FF0080)"
-            bgClip="text"
-            m="0 auto"
-            fontSize="2.5rem"
-            as="h2"
-          >
-            See you, space kittenboy...
-          </Heading> */}
           <Text
             bgGradient="linear(to-l, #7928CA, #FF0080)"
             bgClip="text"
@@ -350,33 +346,74 @@ function Home() {
           >
             Bora tomar uma cerveja e falar sobre gatos no <span> espaço</span>?
           </Text>
-          <ButtonGroup spacing="5rem">
+        </Flex>
+        <Box
+          p="10px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexWrap="wrap"
+        >
+          <Stack
+            direction={isLargerThan600 ? "row" : "column"}
+            m={isLargerThan500 ? "0 0 100px" : "50px 0"}
+            spacing="3rem"
+            data-aos="fade-right"
+            data-aos-once={true}
+          >
+            <ButtonSocial
+              icon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
+              description="LinkedIn"
+            />
+            <ButtonSocial
+              icon={<SiGithub style={{ fontSize: "1.5rem" }} />}
+              description="Github"
+            />
             <Button
+              as="a"
+              href={curriculo}
+              download="DennyRibeiro.pdf"
+              _hover={{
+                bg: "transparent",
+                border: "1px solid #FF0080",
+                color: "#FFF",
+              }}
+              transition="ease-in-out 1ms"
               p={7}
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
-              leftIcon={<SiLinkedin style={{ fontSize: "1.5rem" }} />}
-            >
-              Linkedin
-            </Button>
-            <Button
-              p={7}
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
-              leftIcon={<SiGithub style={{ fontSize: "1.5rem" }} />}
-            >
-              Github
-            </Button>
-            <Button
-              p={7}
-              onClick={(isLoading)=>isLoading=true}
-              
               bgGradient="linear(to-l, #7928CA, #FF0080)"
               leftIcon={<BsPaperclip style={{ fontSize: "1.5rem" }} />}
+              isLoading={loading}
+              loadingText="Carregando..."
+              onClick={() => {
+                setLoading(true);
+                setTimeout(() => {
+                  setLoading(false);
+                }, 2000);
+              }}
+              data-aos="flip-right"
+              data-aos-delay="250"
+              data-aos-once={true}
             >
               Currículo
             </Button>
-          </ButtonGroup>
-        </Flex>
+          </Stack>
+        </Box>
       </section>
+      <Box bgGradient="linear(to-b,  #7928CA,  #FF0080)">
+        <Heading
+          fontFamily="'Righteous', cursive"
+          bgImage={g3}
+          bgSize="contain"
+          letterSpacing="3px"
+          bgClip="text"
+          align="center"
+          p="100px 0"
+          size="3xl"
+          as="h2"
+        >
+          See you, space Kittenboy...
+        </Heading>
+      </Box>
     </Box>
   );
 }
