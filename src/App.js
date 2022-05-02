@@ -1,19 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import {NomeDoUsuarioContext} from "./context/NomeContext";
 import Home from "./Pages/Home";
-import InitialPageParallax from "./Pages/InitialPageParallax";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+   
+      <NomeDoUsuarioContext>
+        <BrowserRouter>
           <Header />
-        <Routes>
-          <Route path="/" element={<InitialPageParallax />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </NomeDoUsuarioContext>
+   
   );
 }
 

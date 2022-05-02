@@ -1,3 +1,6 @@
+import { useContext, useEffect, useRef, useState, React } from "react";
+import ReactDOM from "react-dom/client";
+
 import {
   Box,
   Flex,
@@ -17,6 +20,9 @@ import {
   ModalHeader,
   ModalCloseButton,
   useDisclosure,
+  ModalFooter,
+  ModalBody,
+  Input,
 } from "@chakra-ui/react";
 
 import { BsPaperclip } from "react-icons/bs";
@@ -32,14 +38,17 @@ import astrocat from "../../assets/astrocat.png";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import ButtonSocial from "../../components/Button";
+import { Formik } from "formik";
+import { NomeContext } from "../../context/NomeContext";
 
 function Home() {
+  const { name, setName } = useContext(NomeContext);
+
   const [active, setActive] = useState(dados[0]);
   const [loading, setLoading] = useState(false);
 
@@ -50,9 +59,73 @@ function Home() {
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   const [isLargerThan500] = useMediaQuery("(min-width: 500px)");
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [nome, setNome] = useState("")
+  const modal = (
+    <Modal isCentered isOpen={isOpen}>
+      <ModalOverlay bgGradient="linear(to-l, #7928CA, #FF0080)" />
+      <ModalContent>
+        <ModalHeader>
+          Olá, Gatonauta! Gostaria de me dizer o seu nome?
+        </ModalHeader>
+        <ModalBody>
+          <Formik
+            initialValues={{ nome: "" }}
+            onSubmit={(values) => {
+              setName(values.nome);
+            }}
+          >
+            {(formik) => (
+              <form onSubmit={formik.handleSubmit}>
+                <Input
+                  name="nome"
+                  placeholder="Nome"
+                  onChange={formik.handleChange}
+                />
+                <Button ref={buttonEnviar} display="none" type="submit" />
+              </form>
+            )}
+          </Formik>
+        </ModalBody>
+        <ModalCloseButton onClick={onClose} />
+        <ModalFooter>
+          <Button
+            _hover={{
+              bg: "transparent",
+              border: "1px solid #FF0080",
+              color: "#FF0080",
+            }}
+            type="submit"
+            transition="ease-in-out 1ms"
+            color="rgba(10,13,42,255)"
+            p={5}
+            bgGradient="linear(to-l, #FF0080,  #7928CA)"
+            onClick={() => {
+              submit();
+              onClose();
+            }}
+          >
+            Salvar
+          </Button>
+          <Button
+            _hover={{
+              bg: "transparent",
+
+              color: "#FF0080",
+            }}
+            ml="5px"
+            transition="ease-in-out 1ms"
+            color="rgba(10,13,42,255)"
+            p={5}
+            border="1px solid #FF0080"
+            onClick={onClose}
+          >
+            Anônimo
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
 
   function setIcons() {
     if (isLargerThan900) {
@@ -62,27 +135,19 @@ function Home() {
     } else return 2;
   }
 
-  function modal() {
+  const buttonEnviar = useRef(null);
 
-
-    return (
-      <Modal isCentered isOpen={true}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Olá, Gatonauta! Poderia me dizer o seu nome?</ModalHeader>
-          <ModalCloseButton />
-
-        </ModalContent>
-      </Modal>
-    )
+  function submit() {
+    buttonEnviar.current.click();
   }
 
   useEffect(() => {
-    modal()
-  }, [])
+    onOpen();
+  }, []);
 
   return (
     <Box bgColor="rgba(10,13,42,255)">
+      {modal}
       <section
         style={{
           position: "relative",
@@ -121,7 +186,7 @@ function Home() {
             data-aos-delay="250"
             data-aos-once="true"
           >
-            Olá, Gatonauta
+            Bem vindo(a), Gatonauta {name.split(" ")[0]}!
           </Text>
 
           <VStack>
@@ -144,13 +209,14 @@ function Home() {
             width="65%"
             mt={5}
           >
-            De acordo com meus dados, suas credenciais são de Gatonauta veterano
-            e você tem acesso às minhas informações!
+            {name
+              ? "De acordo com meus dados, suas credenciais são de Gatonauta veterano e você tem acesso às minhas informações!"
+              : "Nosso banco de dados não conseguiu buscar suas informações mas você terá acesso garantido!"}
           </Text>
         </Flex>
       </section>
 
-      <section style={{}}>
+      <section >
         <Flex minH="100vh" justify="center" wrap="wrap">
           <Box
             p="25px 40px"
@@ -204,11 +270,14 @@ function Home() {
                 direction="column"
                 fontFamily="'Orelega One', cursive;"
                 color="#FFF"
-                fontSize={isLargerThan1200 ? "1.8rem" : (isLargerThan900 ? "1.5rem" : "1.2rem")}
+                fontSize={
+                   isLargerThan900
+                    ? "1.5rem"
+                    : "1.2rem"
+                }
                 textAlign="justify"
               >
-
-                <Text >
+                <Text>
                   Economista de formação, percebi que a sequência natural é ir
                   para a área de dados, já que em economia muito se estuda sobre
                   cálculo, estatística e econometria (relações causais).
@@ -325,7 +394,7 @@ function Home() {
         </Swiper>
       </section>
       <section style={{ marginTop: "110px" }}>
-        <Box >
+        <Box>
           <Flex
             direction="column"
             justify="center"
