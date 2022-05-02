@@ -54,7 +54,7 @@ function Home() {
 
   const [imagens] = [active.imagens];
 
-  const [isLargerThan1200] = useMediaQuery("(min-width: 1200px)");
+  
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   const [isLargerThan500] = useMediaQuery("(min-width: 500px)");
