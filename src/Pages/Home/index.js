@@ -11,6 +11,12 @@ import {
   Icon,
   Button,
   Link,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { BsPaperclip } from "react-icons/bs";
@@ -26,7 +32,7 @@ import astrocat from "../../assets/astrocat.png";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
@@ -39,9 +45,14 @@ function Home() {
 
   const [imagens] = [active.imagens];
 
+  const [isLargerThan1200] = useMediaQuery("(min-width: 1200px)");
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   const [isLargerThan500] = useMediaQuery("(min-width: 500px)");
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const [nome, setNome] = useState("")
 
   function setIcons() {
     if (isLargerThan900) {
@@ -50,6 +61,25 @@ function Home() {
       return 3;
     } else return 2;
   }
+
+  function modal() {
+
+
+    return (
+      <Modal isCentered isOpen={true}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Olá, Gatonauta! Poderia me dizer o seu nome?</ModalHeader>
+          <ModalCloseButton />
+
+        </ModalContent>
+      </Modal>
+    )
+  }
+
+  useEffect(() => {
+    modal()
+  }, [])
 
   return (
     <Box bgColor="rgba(10,13,42,255)">
@@ -171,11 +201,14 @@ function Home() {
                 Descrição
               </Heading>
               <Stack
+                direction="column"
                 fontFamily="'Orelega One', cursive;"
                 color="#FFF"
-                fontSize="1.2rem"
+                fontSize={isLargerThan1200 ? "1.8rem" : (isLargerThan900 ? "1.5rem" : "1.2rem")}
+                textAlign="justify"
               >
-                <Text>
+
+                <Text >
                   Economista de formação, percebi que a sequência natural é ir
                   para a área de dados, já que em economia muito se estuda sobre
                   cálculo, estatística e econometria (relações causais).
@@ -292,7 +325,7 @@ function Home() {
         </Swiper>
       </section>
       <section style={{ marginTop: "110px" }}>
-        <Box minH="50vh">
+        <Box >
           <Flex
             direction="column"
             justify="center"
