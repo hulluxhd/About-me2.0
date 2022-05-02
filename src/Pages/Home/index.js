@@ -249,7 +249,7 @@ function Home() {
                 <Text>Formação: Economia</Text>
                 <Text>Formação Técnica: Digital House (CTD)</Text>
                 <Text>
-                  Info: Apresentou-se para o serviço de tecnologia em 2021
+                  Info: Apresentou-se para o serviço de tecnologia em 2020
                 </Text>
                 <Text>Opinião do Almirantado: Tem potencimiau</Text>
               </Stack>
