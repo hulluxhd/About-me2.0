@@ -74,14 +74,27 @@ function Home() {
             onSubmit={(values) => {
               setName(values.nome);
             }}
+            validate={(values) => {
+              const errors = {}
+              if (!values.nome) errors.nome = "Por favor, digite um nome"
+              if (values.nome.length >= 31) errors.nome = "Máximo 30 caracteres"
+              return errors
+            }}
           >
             {(formik) => (
-              <form onSubmit={formik.handleSubmit}>
+              <form onSubmit={formik.handleSubmit} >
                 <Input
                   name="nome"
                   placeholder="Nome"
                   onChange={formik.handleChange}
+                  maxLength={30}
+                  h="60px"
+                  mb="15px"
                 />
+                <Box >
+                  {formik.errors ? <Text float="left" color="#FF0080" as="span">{formik.errors.nome}</Text> : null}
+                  <Text as="span" float="right">{30 - formik.values.nome.length} caracteres restantes</Text>
+                </Box>
                 <Button ref={buttonEnviar} display="none" type="submit" />
               </form>
             )}
@@ -101,6 +114,7 @@ function Home() {
             p={5}
             bgGradient="linear(to-l, #FF0080,  #7928CA)"
             onClick={() => {
+
               submit();
               onClose();
             }}
@@ -124,7 +138,7 @@ function Home() {
           </Button>
         </ModalFooter>
       </ModalContent>
-    </Modal>
+    </Modal >
   );
 
   function setIcons() {
@@ -216,7 +230,7 @@ function Home() {
         </Flex>
       </section>
 
-      <section >
+      <section id="about">
         <Flex minH="100vh" justify="center" wrap="wrap">
           <Box
             p="25px 40px"
@@ -271,7 +285,7 @@ function Home() {
                 fontFamily="'Orelega One', cursive;"
                 color="#FFF"
                 fontSize={
-                   isLargerThan900
+                  isLargerThan900
                     ? "1.5rem"
                     : "1.2rem"
                 }
@@ -337,7 +351,7 @@ function Home() {
         </Flex>
       </section>
 
-      <section style={{ minHeight: "50vh" }}>
+      <section id="tecnologias" style={{ minHeight: "50vh" }}>
         <Box p="20px 0">
           <Text
             bgGradient="linear(to-l,  #FF0080, #7928CA)"
@@ -393,7 +407,7 @@ function Home() {
           ))}
         </Swiper>
       </section>
-      <section style={{ marginTop: "110px" }}>
+      <section id="contato" style={{ marginTop: "110px" }}>
         <Box>
           <Flex
             direction="column"

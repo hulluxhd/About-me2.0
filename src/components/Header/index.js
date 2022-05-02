@@ -45,6 +45,8 @@ function Header() {
               spacingX="4rem"
             >
               <WrapItem
+              as="a"
+              href="#about"
                 cursor="pointer"
                 fontWeight="bold"
                 transition="ease-in-out 200"
@@ -53,6 +55,8 @@ function Header() {
                 About
               </WrapItem>
               <WrapItem
+              as="a"
+              href="#tecnologias"
                 cursor="pointer"
                 fontWeight="bold"
                 _hover={{ borderBottom: "2px solid #FF0080" }}
@@ -60,6 +64,8 @@ function Header() {
                 Tecnologias
               </WrapItem>
               <WrapItem
+              as="a"
+              href="#contato"
                 cursor="pointer"
                 fontWeight="bold"
                 _hover={{ borderBottom: "2px solid #FF0080" }}
