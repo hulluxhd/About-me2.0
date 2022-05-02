@@ -38,8 +38,10 @@ import astrocat from "../../assets/astrocat.png";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
+
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import ButtonSocial from "../../components/Button";
@@ -54,7 +56,6 @@ function Home() {
 
   const [imagens] = [active.imagens];
 
-  
   const [isLargerThan900] = useMediaQuery("(min-width: 900px)");
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   const [isLargerThan500] = useMediaQuery("(min-width: 500px)");
@@ -62,7 +63,13 @@ function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const modal = (
-    <Modal isCentered isOpen={isOpen}>
+    <Modal
+      closeOnEsc={true}
+      closeOnOverlayClick={true}
+      size={isLargerThan500 ? "md" : "xs"}
+      isCentered
+      isOpen={isOpen}
+    >
       <ModalOverlay bgGradient="linear(to-l, #7928CA, #FF0080)" />
       <ModalContent>
         <ModalHeader>
@@ -75,14 +82,15 @@ function Home() {
               setName(values.nome);
             }}
             validate={(values) => {
-              const errors = {}
-              if (!values.nome) errors.nome = "Por favor, digite um nome"
-              if (values.nome.length >= 31) errors.nome = "Máximo 30 caracteres"
-              return errors
+              const errors = {};
+              if (!values.nome) errors.nome = "Por favor, digite um nome";
+              if (values.nome.length >= 31)
+                errors.nome = "Máximo 30 caracteres";
+              return errors;
             }}
           >
             {(formik) => (
-              <form onSubmit={formik.handleSubmit} >
+              <form onSubmit={formik.handleSubmit}>
                 <Input
                   name="nome"
                   placeholder="Nome"
@@ -91,9 +99,15 @@ function Home() {
                   h="60px"
                   mb="15px"
                 />
-                <Box >
-                  {formik.errors ? <Text float="left" color="#FF0080" as="span">{formik.errors.nome}</Text> : null}
-                  <Text as="span" float="right">{30 - formik.values.nome.length} caracteres restantes</Text>
+                <Box>
+                  {formik.errors ? (
+                    <Text float="left" color="#FF0080" as="span">
+                      {formik.errors.nome}
+                    </Text>
+                  ) : null}
+                  <Text as="span" float="right">
+                    {30 - formik.values.nome.length} caracteres restantes
+                  </Text>
                 </Box>
                 <Button ref={buttonEnviar} display="none" type="submit" />
               </form>
@@ -114,7 +128,6 @@ function Home() {
             p={5}
             bgGradient="linear(to-l, #FF0080,  #7928CA)"
             onClick={() => {
-
               submit();
               onClose();
             }}
@@ -138,7 +151,7 @@ function Home() {
           </Button>
         </ModalFooter>
       </ModalContent>
-    </Modal >
+    </Modal>
   );
 
   function setIcons() {
@@ -193,6 +206,7 @@ function Home() {
           <Text
             bgGradient="linear(to-l,  #FF0080, #7928CA)"
             bgClip="text"
+            textAlign="center"
             m="0 auto"
             fontSize="2.5rem"
             fontFamily="'Righteous', cursive"
@@ -284,29 +298,41 @@ function Home() {
                 direction="column"
                 fontFamily="'Orelega One', cursive;"
                 color="#FFF"
-                fontSize={
-                  isLargerThan900
-                    ? "1.5rem"
-                    : "1.2rem"
-                }
+                fontSize={isLargerThan900 ? "1.5rem" : "1.2rem"}
                 textAlign="justify"
               >
                 <Text>
-                  Economista de formação, percebi que a sequência natural é ir
-                  para a área de dados, já que em economia muito se estuda sobre
-                  cálculo, estatística e econometria (relações causais).
-                  Contudo, já estudava programação antes mesmo da graduação e
-                  sentia um grande chamado. Decidi então não seguir a sequência
-                  natural e partir para desenvolvimento web, que é ao mesmo
-                  tempo desafiador e divertido.
+                  Sempre fui apaixonado por números, lógica e resolução de
+                  problemas complexos, por isso a primeira graduação que entrei
+                  foi em Engenharia. Porém, rapidamente descobri que faltava
+                  algo e migrei para Economia, que vai para além dos números,
+                  buscando entender e resolver problemas complexos por meio de
+                  estatística e econometria.
                 </Text>
                 <Text>
-                  Como economista, consigo entender sobre a lógica de negócio de
-                  uma forma mais holística e completa, pois entendo como os
-                  mercados funcionam e como o cenário econômico nacional impacta
-                  os negócios. Como desenvolvedor, posso ajudar no levantamento
-                  de requisitos com uma visão horizontal, entendendo as
-                  necessidades do cliente, bem como suas soluções.
+                  Ao adentrar na área do desenvolvimento encontrei a conexão dos
+                  meus interesses. Entender regras de negócios, resolver
+                  problemas complexos de forma elegante, lidar com dados,
+                  conseguir construir produtos em equipe, ser desafiado e
+                  esticado todos os dias.
+                </Text>
+                <Text>
+                  Os recursos são escassos e a humanidade precisa atingir{" "}
+                  <Text
+                    as="span"
+                    as="a"
+                    href="https://pt.wikipedia.org/wiki/Economia_de_escala"
+                    color="#FF0080"
+                  >
+                    economias de escala
+                  </Text>
+                  , uma situação onde se pode produzir mais com a mesma
+                  quantidade de insumos. Esse cenário só pode ser atingido por
+                  meio da tecnologia e eu estou aqui para participar da mudança.
+                </Text>
+                <Text>
+                  Meu grande sonho é fazer parte da mudança e da construção produtos
+                  incríveis.
                 </Text>
               </Stack>
             </Box>
@@ -396,8 +422,13 @@ function Home() {
           ))}
         </Swiper>
         <Swiper
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
           pagination={{ clickable: true }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           style={{ backgroundColor: "transparent" }}
         >
           {imagens.map((imagem, i) => (

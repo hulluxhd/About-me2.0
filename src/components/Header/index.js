@@ -10,6 +10,7 @@ import {
   IconButton,
   MenuItem,
   MenuList,
+  MenuDivider,
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import gatomau2 from "../../assets/gatomau2.png";
@@ -45,8 +46,8 @@ function Header() {
               spacingX="4rem"
             >
               <WrapItem
-              as="a"
-              href="#about"
+                as="a"
+                href="#about"
                 cursor="pointer"
                 fontWeight="bold"
                 transition="ease-in-out 200"
@@ -55,8 +56,8 @@ function Header() {
                 About
               </WrapItem>
               <WrapItem
-              as="a"
-              href="#tecnologias"
+                as="a"
+                href="#tecnologias"
                 cursor="pointer"
                 fontWeight="bold"
                 _hover={{ borderBottom: "2px solid #FF0080" }}
@@ -64,8 +65,8 @@ function Header() {
                 Tecnologias
               </WrapItem>
               <WrapItem
-              as="a"
-              href="#contato"
+                as="a"
+                href="#contato"
                 cursor="pointer"
                 fontWeight="bold"
                 _hover={{ borderBottom: "2px solid #FF0080" }}
@@ -87,10 +88,10 @@ function Header() {
       ) : (
         <Box
           bgColor="rgba(10,13,42,255)"
-          p="15px 10px"
+          p="20px 20px"
           display="flex"
           alignContent="center"
-          justifyContent="space-evenly"
+          justifyContent="space-between"
         >
           <Image cursor="pointer" src={gatomau2} width="50px" />
           <Menu>
@@ -102,20 +103,29 @@ function Header() {
               variant="outline"
             />
             <MenuList>
-            <MenuItem  _hover={{ borderBottom: "2px solid #FF0080" }}>About</MenuItem>
-            <MenuItem>Tecnologias</MenuItem>
-            <MenuItem>Contato</MenuItem>
+            <MenuItem >
+            <Avatar
+              bgGradient="linear(to-b,  #7928CA,  #FF0080)"
+              size="md"
+              cursor="pointer"
+              name={name}
+              iconLabel={name}
+              m
+            />
+            <MenuDivider/>
+              </MenuItem>
+              <MenuItem as="a" href="#about">
+                About
+              </MenuItem>
+              <MenuItem as="a" href="#tecnologias">
+                Tecnologias
+              </MenuItem>
+              <MenuItem as="a" href="#contato">
+                Contato
+              </MenuItem>
             </MenuList>
           </Menu>
-          <Avatar
-            bgGradient="linear(to-b,  #7928CA,  #FF0080)"
-            size="md"
-            cursor="pointer"
-            name={name}
-            iconLabel={name}
-            mr="20px"
-            ml="20px"
-          />
+          
         </Box>
       )}
     </>
