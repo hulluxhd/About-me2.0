@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState, React } from "react";
-import ReactDOM from "react-dom/client";
 
 import {
   Box,
@@ -27,14 +26,14 @@ import {
 
 import { BsPaperclip } from "react-icons/bs";
 import { SiLinkedin, SiGithub } from "react-icons/si";
-import curriculo from "../../assets/Denny.pdf";
 import "aos/dist/aos.css";
-import g3 from "../../assets/g3.jpg";
-import gatonauta from "../../assets/gatonauta1.png";
-import stars from "../../assets/stars.png";
-import houston from "../../assets/houston.png";
-import galaxy from "../../assets/g2.jpg";
-import astrocat from "../../assets/astrocat.png";
+import curriculo from "../../assets/Denny.pdf";
+import g3 from "../../assets/images/g3.jpg";
+import gatonauta from "../../assets/images/gatonauta1.png";
+import stars from "../../assets/images/stars.png";
+import houston from "../../assets/images/houston.png";
+import galaxy from "../../assets/images/g2.jpg";
+import astrocat from "../../assets/images/astrocat.png";
 import dados from "../../assets/data/tecnologias";
 import "./style.css";
 import "swiper/css";
@@ -319,7 +318,7 @@ function Home() {
                 <Text>
                   Os recursos são escassos e a humanidade precisa atingir{" "}
                   <Text
-                    as="span"
+                    
                     as="a"
                     href="https://pt.wikipedia.org/wiki/Economia_de_escala"
                     color="#FF0080"
@@ -331,8 +330,8 @@ function Home() {
                   meio da tecnologia e eu estou aqui para participar da mudança.
                 </Text>
                 <Text>
-                  Meu grande sonho é fazer parte da mudança e da construção produtos
-                  incríveis.
+                  Meu grande sonho é fazer parte da mudança e da construção
+                  produtos incríveis.
                 </Text>
               </Stack>
             </Box>
@@ -410,7 +409,7 @@ function Home() {
                 flexDirection="column"
                 alignItems="center"
                 border={
-                  active.id == tecnologia.id ? "2px solid #FF0080" : "none"
+                  active.id === tecnologia.id ? "2px solid #FF0080" : "none"
                 }
                 p="10px 20px"
                 borderRadius="12px"

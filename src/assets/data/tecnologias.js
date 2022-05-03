@@ -1,11 +1,11 @@
 import {SiJavascript, SiHtml5, SiCss3, SiReact, SiJava, SiMysql, SiSpring, SiAmazonaws, SiHeroku, SiGithub } from "react-icons/si"
-import j1 from "../todo_js.jpg"
-import html1 from "../sao_luis.jpg"
-import css1 from "../codar.jpg"
-import css2 from "../bootstrap1.jpg"
-import css3 from "../bom_trajeto.jpg"
-import wecame from "../../assets/wecame.jpg";
-import about1 from "../../assets/aboutme1.0.jpg";
+import j1 from "../images/todo_js.jpg"
+import html1 from "../images/sao_luis.jpg"
+import css1 from "../images/codar.jpg"
+import css2 from "../images/bootstrap1.jpg"
+import css3 from "../images/bom_trajeto.jpg"
+import wecame from "../../assets/images/wecame.jpg";
+import about1 from "../../assets/images/aboutme1.0.jpg";
 
 
 const dados = [

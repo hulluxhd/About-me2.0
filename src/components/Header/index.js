@@ -13,7 +13,7 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import gatomau2 from "../../assets/gatomau2.png";
+import gatomau2 from "../../assets/images/gatomau2.png";
 import { NomeContext } from "../../context/NomeContext";
 import "./style.css";
 import { FiMenu } from "react-icons/fi";
@@ -103,16 +103,16 @@ function Header() {
               variant="outline"
             />
             <MenuList>
-            <MenuItem >
-            <Avatar
-              bgGradient="linear(to-b,  #7928CA,  #FF0080)"
-              size="md"
-              cursor="pointer"
-              name={name}
-              iconLabel={name}
-              m
-            />
-            <MenuDivider/>
+              <MenuItem>
+                <Avatar
+                  bgGradient="linear(to-b,  #7928CA,  #FF0080)"
+                  size="md"
+                  cursor="pointer"
+                  name={name}
+                  iconLabel={name}
+                  m
+                />
+                <MenuDivider />
               </MenuItem>
               <MenuItem as="a" href="#about">
                 About
@@ -125,7 +125,6 @@ function Header() {
               </MenuItem>
             </MenuList>
           </Menu>
-          
         </Box>
       )}
     </>
