@@ -13,5 +13,5 @@ Fiz esse projeto como uma forma de apresentação de quem sou e para onde desejo
 * Swiper
 * React-router-dom
 
-## Heroku
-https://denny-ribeiro.herokuapp.com/
+## Vercel
+https://denny-ribeiro.vercel.app/
