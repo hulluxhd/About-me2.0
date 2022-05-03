@@ -1,0 +1,93 @@
+
+/* Satélite */
+
+#sat-orbit{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16rem;
+    height: 16rem;
+    margin-top: -8rem;
+    margin-left: -8rem;
+    transform-style: preserve-3d;
+    animation-name: orbit;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+#sat{
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    margin-left: -1.5rem;
+    background-color: #525e65;
+    border-radius: 50%
+}
+
+@keyframes orbit {
+    0% {transform: rotateZ(0deg);}
+    100% {transform: rotateZ(360deg);}
+}
+
+/* Swiper */
+
+.swiper{
+    background-color: rgb(229, 233, 236);
+    height:20%;
+}
+
+.swiper-slide {
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px;
+    gap: 5px;
+}
+
+.swiper-slide svg{
+    font-size: 4rem;
+    background-color: rgba(10,13,42,255);
+    border-radius: 50%;
+    padding: 10px;
+    color: #fff;  
+    cursor: pointer;
+    
+}
+
+.swiper-slide img{
+    width:75%;
+    max-height: 70vh;
+    border-radius: 10px;
+    cursor:grab;  
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .swiper-slide img{
+        width:100%;
+        max-height: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .swiper-slide img{
+        width:100%;
+        min-height: 300px;
+        border-radius: 10px;
+    }
+}
+
+
+
+
+

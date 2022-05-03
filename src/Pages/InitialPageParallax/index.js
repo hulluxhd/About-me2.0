@@ -12,7 +12,7 @@ function InitialPageParallax() {
 
     return (
 
-        <div>
+        
             <Parallax pages={4} ref={ref}>
                 <ParallaxLayer
                     offset={0}
@@ -58,7 +58,7 @@ function InitialPageParallax() {
 
                 </ParallaxLayer>
             </Parallax>
-        </div>
+        
     );
 }
 
