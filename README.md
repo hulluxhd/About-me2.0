@@ -2,7 +2,7 @@
 Fiz esse projeto como uma forma de apresentação de quem sou e para onde desejo ir. 
 
 ## Demo
-![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif)
+![](https://github.com/hulluxhd/About-me2.0/blob/development/src/assets/images/demo02(1).gif)
 
 ## Tecnologias utilizadas
 * React
