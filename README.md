@@ -1,5 +1,5 @@
 # About me 2.0
-Fiz esse projeto como uma forma de apresentação de quem sou e para onde desejo ir. 
+Projeto curto de apresentação de habilidades. A versão 2.0 já está em desenvolvimento.
 
 ## Demo
 ![](https://github.com/hulluxhd/About-me2.0/blob/development/src/assets/images/demo02(1).gif)
